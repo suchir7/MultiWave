@@ -27,6 +27,19 @@ The project uses C#, .NET 10, WinUI 3 / Windows App SDK, and NAudio. It does not
 
 ## Download and install MultiWave
 
+### Quick install for users
+
+The easiest supported installation is the packaged ZIP release:
+
+1. Open the [MultiWave Releases page](https://github.com/suchir7/MultiWave/releases).
+2. Open the latest release and download `MultiWave-v1.0.0-x64.zip` under **Assets**.
+3. Extract the ZIP file.
+4. Open the extracted folder and right-click `Install.ps1`.
+5. Select **Run with PowerShell** and follow the prompts.
+6. Open the Windows Start menu, search for **MultiWave**, and launch it.
+
+You do not need to install .NET, Visual Studio, or run `dotnet run` when using the packaged release.
+
 ### What to download
 
 For normal users, download the packaged release. Do **not** download **Source code (zip)** or **Source code (tar.gz)** unless you are a developer.
