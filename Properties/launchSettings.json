@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MultiWave (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "MultiWave (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
