@@ -27,38 +27,53 @@ The project uses C#, .NET 10, WinUI 3 / Windows App SDK, and NAudio. It does not
 
 ## Download and install MultiWave
 
-Most users should download the latest packaged release rather than download the source code.
+### What to download
+
+For normal users, download the packaged release. Do **not** download **Source code (zip)** or **Source code (tar.gz)** unless you are a developer.
 
 1. Open the [MultiWave Releases page](https://github.com/suchir7/MultiWave/releases).
-2. Open the newest release, for example `v1.0.0`.
-3. Download the file named similar to `MultiWave-v1.0.0-x64.zip`.
-4. Extract the ZIP file to a local folder. Do not run the application directly from inside the ZIP.
-5. The extracted folder contains `Install.ps1`, the MultiWave `.msix` package, and the Windows App SDK dependencies.
+2. Select the newest release, currently `v1.0.0`.
+3. Under **Assets**, download `MultiWave-v1.0.0-x64.zip`.
+4. Extract the ZIP to a normal folder such as `Downloads\MultiWave`.
+5. Do not run the application from inside the ZIP file.
 
-### Installing the MSIX package
+The extracted folder contains:
 
-The recommended installation method is to right-click `Install.ps1`, choose **Run with PowerShell**, and follow the prompts. If Windows blocks the script, open PowerShell as Administrator, change to the extracted folder, and run:
+- `Install.ps1` — installation script
+- `MultiWave_1.0.0.0_x64.msix` — the application package
+- `Dependencies` — required Windows App SDK packages
+
+### Install the downloaded application
+
+1. Open the extracted `MultiWave-v1.0.0-x64` folder.
+2. Right-click `Install.ps1` and select **Run with PowerShell**.
+3. If Windows blocks script execution, open PowerShell as Administrator and run:
 
 ```powershell
+cd "$HOME\Downloads\MultiWave\MultiWave_1.0.0.0_x64_Test"
 Set-ExecutionPolicy -Scope Process Bypass
 .\Install.ps1
 ```
 
-The script installs the required Windows App SDK dependencies and registers MultiWave. For a release signed with a trusted certificate, you can alternatively double-click the `.msix` file and select **Install**.
+4. Follow the installation prompts. The script installs the Windows App SDK dependencies and registers the MSIX package.
+5. Open the Windows Start menu, search for **MultiWave**, and launch it.
 
-For a self-signed release:
+The current `v1.0.0` package is an unsigned test package. Windows may display a publisher warning or refuse installation until the package is signed and trusted. Only install it if you trust this project. A future release will include a trusted or self-signed certificate with separate certificate-installation instructions.
 
-1. Double-click the downloaded `.cer` certificate.
-2. Select **Install Certificate**.
-3. Choose **Local Machine** if you have administrator permission, or **Current User** otherwise.
-4. Select **Place all certificates in the following store**.
-5. Choose **Trusted People**, finish the certificate wizard, and accept the security prompt.
-6. Run `Install.ps1` again, or double-click the `.msix` file and select **Install**.
+Do not double-click random files inside the extracted folder. Download packages only from the official
+[suchir7/MultiWave Releases page](https://github.com/suchir7/MultiWave/releases).
 
-Only install packages and certificates downloaded from the official
-[suchir7/MultiWave Releases page](https://github.com/suchir7/MultiWave/releases). Windows may show a publisher warning for self-signed packages.
+### First-time application setup
 
-After installation, open the Windows Start menu, search for **MultiWave**, and launch it. The application does not need to be started with `dotnet run`.
+1. Ensure Windows has at least one active playback device.
+2. Launch MultiWave and press **Refresh** if the device list is empty.
+3. In **Settings**, choose the Windows playback endpoint to capture.
+4. Select one or more different physical playback endpoints in the device list.
+5. Press **Start System Audio**.
+6. Adjust master volume, per-device volume, EQ, and delay.
+7. For microphone calibration, enable microphone access in **Windows Settings → Privacy & security → Microphone**, select a microphone under **Synchronization**, and choose **Measure & Calibrate**.
+
+MultiWave saves preferences automatically for the current Windows user. To uninstall it, open **Windows Settings → Apps → Installed apps**, find **MultiWave**, open its menu, and choose **Uninstall**.
 
 ### First-time setup
 
