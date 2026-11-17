@@ -31,13 +31,20 @@ Most users should download the latest packaged release rather than download the 
 
 1. Open the [MultiWave Releases page](https://github.com/suchir7/MultiWave/releases).
 2. Open the newest release, for example `v1.0.0`.
-3. Download the file named similar to `MultiWave-*-x64.msix`.
-4. If the release also includes a `.cer` certificate, download that file too. It is required for an unsigned or self-signed test release.
-5. If you downloaded a ZIP file, extract it first. Do not run the application directly from inside the ZIP.
+3. Download the file named similar to `MultiWave-v1.0.0-x64.zip`.
+4. Extract the ZIP file to a local folder. Do not run the application directly from inside the ZIP.
+5. The extracted folder contains `Install.ps1`, the MultiWave `.msix` package, and the Windows App SDK dependencies.
 
 ### Installing the MSIX package
 
-For a release signed with a trusted certificate, double-click the `.msix` file and select **Install**.
+The recommended installation method is to right-click `Install.ps1`, choose **Run with PowerShell**, and follow the prompts. If Windows blocks the script, open PowerShell as Administrator, change to the extracted folder, and run:
+
+```powershell
+Set-ExecutionPolicy -Scope Process Bypass
+.\Install.ps1
+```
+
+The script installs the required Windows App SDK dependencies and registers MultiWave. For a release signed with a trusted certificate, you can alternatively double-click the `.msix` file and select **Install**.
 
 For a self-signed release:
 
@@ -46,7 +53,7 @@ For a self-signed release:
 3. Choose **Local Machine** if you have administrator permission, or **Current User** otherwise.
 4. Select **Place all certificates in the following store**.
 5. Choose **Trusted People**, finish the certificate wizard, and accept the security prompt.
-6. Double-click the `.msix` file and select **Install**.
+6. Run `Install.ps1` again, or double-click the `.msix` file and select **Install**.
 
 Only install packages and certificates downloaded from the official
 [suchir7/MultiWave Releases page](https://github.com/suchir7/MultiWave/releases). Windows may show a publisher warning for self-signed packages.
